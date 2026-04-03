@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GATE 2027 EE Prep Dashboard | My Personal Study Planner</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- Sidebar Navigation -->
+<nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <div class="logo">
+            <i class="fas fa-bolt"></i>
+            <span>GATE EE 2027</span>
+        </div>
+        <button class="sidebar-toggle" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <div class="sidebar-user">
+        <div class="user-avatar">
+            <i class="fas fa-user-graduate"></i>
+        </div>
+        <div class="user-info">
+            <div class="user-name" id="userName">My Dashboard</div>
+            <div class="user-status">🎯 Target: GATE 2027 EE</div>
+        </div>
+    </div>
+
+    <ul class="nav-menu">
+        <li class="nav-item active" data-page="dashboard">
+            <a href="#" onclick="showPage('dashboard')">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <li class="nav-item" data-page="roadmap">
+            <a href="#" onclick="showPage('roadmap')">
+                <i class="fas fa-route"></i>
+                <span>Study Roadmap</span>
+            </a>
+        </li>
+        <li class="nav-item" data-page="syllabus">
+            <a href="#" onclick="showPage('syllabus')">
+                <i class="fas fa-book-open"></i>
+                <span>Full Syllabus</span>
+            </a>
+        </li>
+        <li class="nav-item" data-page="weekly">
+            <a href="#" onclick="showPage('weekly')">
+                <i class="fas fa-calendar-week"></i>
+                <span>Weekly Planner</span>
+            </a>
+        </li>
+        <li class="nav-item" data-page="resources">
+            <a href="#" onclick="showPage('resources')">
+                <i class="fas fa-link"></i>
+                <span>Free Resources</span>
+            </a>
+        </li>
+        <li class="nav-item" data-page="mock">
+            <a href="#" onclick="showPage('mock')">
+                <i class="fas fa-clipboard-check"></i>
+                <span>Mock Tests</span>
+            </a>
+        </li>
+        <li class="nav-item" data-page="tricks">
+            <a href="#" onclick="showPage('tricks')">
+                <i class="fas fa-magic"></i>
+                <span>Tricks & Formulas</span>
+            </a>
+        </li>
+        <li class="nav-item" data-page="tracker">
+            <a href="#" onclick="showPage('tracker')">
+                <i class="fas fa-chart-line"></i>
+                <span>Progress Tracker</span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="countdown-widget">
+        <div class="countdown-title"><i class="fas fa-clock"></i> Days to GATE 2027</div>
+        <div class="countdown-number" id="daysLeft">--</div>
+        <div class="countdown-sub">Feb 7, 2027 (Expected)</div>
+        <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-label" id="progressLabel">Journey Started</div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="main-content" id="mainContent">
+
+    <!-- Top Bar -->
+    <header class="top-bar">
+        <button class="menu-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+        <div class="page-title" id="pageTitle">Dashboard</div>
+        <div class="top-actions">
+            <div class="date-display" id="currentDate"></div>
+            <button class="btn-primary" onclick="showPage('weekly')">
+                <i class="fas fa-plus"></i> Log Today
+            </button>
+        </div>
+    </header>
+
+    <!-- ====================== DASHBOARD PAGE ====================== -->
+    <section class="page active" id="page-dashboard">
+        <div class="page-header">
+            <h1>🎯 Welcome to Your GATE 2027 Command Center</h1>
+            <p class="subtitle">Electrical Engineering | First Attempt | Target: Top Rank</p>
+        </div>
+
+        <!-- Alert Banner -->
+        <div class="alert-banner">
+            <i class="fas fa-fire"></i>
+            <strong>EXAM DATE: February First Week, 2027</strong> — You have approximately 10 months from April 2026. Stay consistent! Daily 3 hours (9 PM – 12 AM) = 900+ hours total prep time!
+        </div>
+
+        <!-- Stats Row -->
+        <div class="stats-grid">
+            <div class="stat-card blue">
+                <div class="stat-icon"><i class="fas fa-book"></i></div>
+                <div class="stat-info">
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">GATE Sections</div>
+                </div>
+            </div>
+            <div class="stat-card green">
+                <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                <div class="stat-info">
+                    <div class="stat-number">900+</div>
+                    <div class="stat-label">Study Hours Planned</div>
+                </div>
+            </div>
+            <div class="stat-card orange">
+                <div class="stat-icon"><i class="fas fa-star"></i></div>
+                <div class="stat-info">
+                    <div class="stat-number">100</div>
+                    <div class="stat-label">Total Marks</div>
+                </div>
+            </div>
+            <div class="stat-card purple">
+                <div class="stat-icon"><i class="fas fa-tasks"></i></div>
+                <div class="stat-info">
+                    <div class="stat-number" id="topicsCompleted">0</div>
+                    <div class="stat-label">Topics Completed</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exam Pattern -->
+        <div class="section-grid">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-info-circle"></i> GATE 2027 EE Exam Pattern</h3>
+                </div>
+                <div class="card-body">
+                    <div class="exam-pattern-grid">
+                        <div class="pattern-item">
+                            <span class="pattern-label">Mode</span>
+                            <span class="pattern-val">CBT (Online)</span>
+                        </div>
+                        <div class="pattern-item">
+                            <span class="pattern-label">Duration</span>
+                            <span class="pattern-val">3 Hours</span>
+                        </div>
+                        <div class="pattern-item">
+                            <span class="pattern-label">Total Questions</span>
+                            <span class="pattern-val">65</span>
+                        </div>
+                        <div class="pattern-item">
+                            <span class="pattern-label">Total Marks</span>
+                            <span class="pattern-val">100</span>
+                        </div>
+                        <div class="pattern-item">
+                            <span class="pattern-label">GA Marks</span>
+                            <span class="pattern-val">15 Marks</span>
+                        </div>
+                        <div class="pattern-item">
+                            <span class="pattern-label">Engineering Math</span>
+                            <span class="pattern-val">13 Marks</span>
+                        </div>
+                        <div class="pattern-item">
+                            <span class="pattern-label">Core EE</span>
+                            <span class="pattern-val">72 Marks</span>
+                        </div>
+                        <div class="pattern-item">
+                            <span class="pattern-label">Negative Marking</span>
+                            <span class="pattern-val">MCQ Only (1/3)</span>
+                        </div>
+                    </div>
+                    <div class="q-types">
+                        <span class="q-type mcq">MCQ</span>
+                        <span class="q-type msq">MSQ (No -ve)</span>
+                        <span class="q-type nat">NAT (No -ve)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-chart-pie"></i> Marks Distribution</h3>
+                </div>
+                <div class="card-body chart-container-sm">
+                    <canvas id="marksChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subject Weightage -->
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-weight"></i> Subject-wise Weightage & Priority</h3>
+                <span class="badge">Based on PYQ Analysis 2019-2025</span>
+            </div>
+            <div class="card-body">
+                <div class="weightage-grid">
+                    <div class="weight-item high">
+                        <div class="weight-subject">Power Systems</div>
+                        <div class="weight-bar-wrap">
+                            <div class="weight-bar" style="width:88%"></div>
+                        </div>
+                        <div class="weight-marks">~12–14 marks</div>
+                        <div class="weight-priority">🔴 Very High</div>
+                    </div>
+                    <div class="weight-item high">
+                        <div class="weight-subject">Electrical Machines</div>
+                        <div class="weight-bar-wrap">
+                            <div class="weight-bar" style="width:85%"></div>
+                        </div>
+                        <div class="weight-marks">~11–13 marks</div>
+                        <div class="weight-priority">🔴 Very High</div>
+                    </div>
+                    <div class="weight-item high">
+                        <div class="weight-subject">Control Systems</div>
+                        <div class="weight-bar-wrap">
+                            <div class="weight-bar" style="width:80%"></div>
+                        </div>
+                        <div class="weight-marks">~9–11 marks</div>
+                        <div class="weight-priority">🔴 Very High</div>
+                    </div>
+                    <div class="weight-item medium">
+                        <div class="weight-subject">Electric Circuits</div>
+                        <div class="weight-bar-wrap">
+                            <div class="weight-bar" style="width:70%"></div>
+                        </div>
+                        <div class="weight-marks">~8–10 marks</div>
+                        <div class="weight-priority">🟠 High</div>
+                    </div>
+                    <div class="weight-item medium">
+                        <div class="weight-subject">Signals & Systems</div>
+                        <div class="weight-bar-wrap">
+                            <div class="weight-bar" style="width:65%"></div>
+                        </div>
+                        <div class="weight-marks">~7–9 marks</div>
+                        <div class="weight-priority">🟠 High</div>
+                    </div>
+                    <div class="weight-item medium">
+                        <div class="weight-subject">Analog & Digital Electronics</div>
+                        <div class="weight-bar-wrap">
+                            <div class="weight-bar" style="width:60%"></div>
+                        </div>
+                        <div class="weight-marks">~7–9 marks</div>
+                        <div class="weight-priority">🟠 High</div>
+                    </div>
+                    <div class="weight-item medium">
+                        <div class="weight-subject">Power Electronics</div>
+                        <div class="weight-bar-wrap">
+                            <div class="weight-bar" style="width:55%"></div>
+                        </div>
+                        <div class="weight-marks">~6–8 marks</div>
+                        <div class="weight-priority">🟠 High</div>
+                    </div>
+                    <div class="weight-item low">
+                        <div class="weight-subject">Electromagnetic Fields</div>
+                        <div class="weight-bar-wrap">
+                            <div class="weight-bar" style="width:40%"></div>
+                        </div>
+                        <div class="weight-marks">~4–6 marks</div>
+                        <div class="weight-priority">🟡 Medium</div>
+                    </div>
+                    <div class="weight-item low">
+                        <div class="weight-subject">Measurements</div>
+                        <div class="weight-bar-wrap">
+                            <div class="weight-bar" style="width:35%"></div>
+                        </div>
+                        <div class="weight-marks">~3–5 marks</div>
+                        <div class="weight-priority">🟡 Medium</div>
+                    </div>
+                    <div class="weight-item low">
+                        <div class="weight-subject">Engineering Mathematics</div>
+                        <div class="weight-bar-wrap">
+                            <div class="weight-bar" style="width:80%"></div>
+                        </div>
+                        <div class="weight-marks">~13 marks</div>
+                        <div class="weight-priority">🔴 Must Do</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div class="quick-nav-grid">
+            <div class="quick-card" onclick="showPage('roadmap')">
+                <i class="fas fa-route"></i>
+                <h4>Study Roadmap</h4>
+                <p>Month-wise plan Apr 2026 – Feb 2027</p>
+                <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="quick-card" onclick="showPage('syllabus')">
+                <i class="fas fa-book-open"></i>
+                <h4>Full Syllabus</h4>
+                <p>All 10 sections with topics</p>
+                <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="quick-card" onclick="showPage('resources')">
+                <i class="fas fa-link"></i>
+                <h4>Free Resources</h4>
+                <p>NPTEL, YouTube, Books</p>
+                <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="quick-card" onclick="showPage('mock')">
+                <i class="fas fa-clipboard-check"></i>
+                <h4>Mock Tests</h4>
+                <p>Official + Free Practice Tests</p>
+                <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="quick-card" onclick="showPage('tricks')">
+                <i class="fas fa-magic"></i>
+                <h4>Shortcut Tricks</h4>
+                <p>Quick formulas & memory tricks</p>
+                <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="quick-card" onclick="showPage('tracker')">
+                <i class="fas fa-chart-line"></i>
+                <h4>Track Progress</h4>
+                <p>Mark topics as complete</p>
+                <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+            </div>
+        </div>
+
+        <!-- Daily Schedule Card -->
+        <div class="card schedule-card">
+            <div class="card-header">
+                <h3><i class="fas fa-moon"></i> Your Daily Study Schedule (9 PM – 12 AM)</h3>
+            </div>
+            <div class="card-body">
+                <div class="schedule-grid">
+                    <div class="schedule-slot slot-1">
+                        <div class="slot-time">9:00 PM – 9:15 PM</div>
+                        <div class="slot-activity">📖 Review previous day notes (15 min warm-up)</div>
+                    </div>
+                    <div class="schedule-slot slot-2">
+                        <div class="slot-time">9:15 PM – 10:30 PM</div>
+                        <div class="slot-activity">🧠 Core Subject Study – New Topic (75 min deep work)</div>
+                    </div>
+                    <div class="schedule-slot slot-3">
+                        <div class="slot-time">10:30 PM – 10:40 PM</div>
+                        <div class="slot-activity">☕ Short Break (10 min)</div>
+                    </div>
+                    <div class="schedule-slot slot-4">
+                        <div class="slot-time">10:40 PM – 11:40 PM</div>
+                        <div class="slot-activity">✏️ Practice Problems / PYQs (60 min)</div>
+                    </div>
+                    <div class="schedule-slot slot-5">
+                        <div class="slot-time">11:40 PM – 12:00 AM</div>
+                        <div class="slot-activity">📝 Make Notes / Formula Sheet Update (20 min)</div>
+                    </div>
+                </div>
+                <div class="tip-box">
+                    <i class="fas fa-lightbulb"></i>
+                    <strong>Pro Tip:</strong> 3 hours × 300 days = 900 hours of quality preparation. That's more than enough to crack GATE EE with a good rank if done consistently!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== ROADMAP PAGE ====================== -->
+    <section class="page" id="page-roadmap">
+        <div class="page-header">
+            <h1>📅 Complete 10-Month Study Roadmap</h1>
+            <p class="subtitle">April 2026 → February 2027 | 3 hrs/day (9 PM–12 AM)</p>
+        </div>
+
+        <div class="roadmap-phases">
+
+            <!-- Phase 1 -->
+            <div class="phase-block phase-foundation">
+                <div class="phase-header">
+                    <div class="phase-badge">PHASE 1</div>
+                    <div class="phase-title">Foundation & Core Building</div>
+                    <div class="phase-dates">April 2026 – June 2026 (3 months)</div>
+                    <div class="phase-desc">Build strong fundamentals. No shortcuts. Understand concepts deeply. Cover 4 subjects.</div>
+                </div>
+                <div class="months-grid">
+
+                    <div class="month-card">
+                        <div class="month-header">
+                            <div class="month-emoji">🌱</div>
+                            <div>
+                                <div class="month-name">APRIL 2026</div>
+                                <div class="month-tag">Start Strong</div>
+                            </div>
+                        </div>
+                        <div class="month-subjects">
+                            <div class="subject-block">
+                                <div class="sb-title"><i class="fas fa-calculator"></i> Engineering Mathematics</div>
+                                <ul class="sb-topics">
+                                    <li>Linear Algebra – Matrices, Eigenvalues, Systems of equations</li>
+                                    <li>Calculus – Limits, Derivatives, Integration, Fourier Series</li>
+                                    <li>Differential Equations – ODE, PDE basics</li>
+                                    <li>Complex Variables – Analytic functions, Cauchy's theorem</li>
+                                </ul>
+                            </div>
+                            <div class="subject-block">
+                                <div class="sb-title"><i class="fas fa-bolt"></i> Electric Circuits (Start)</div>
+                                <ul class="sb-topics">
+                                    <li>KCL, KVL – Node & Mesh analysis</li>
+                                    <li>Superposition, Thevenin, Norton theorems</li>
+                                    <li>Maximum Power Transfer</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="month-target">
+                            <span>🎯 Week 1-2: Math | Week 3-4: Circuits Start</span>
+                        </div>
+                    </div>
+
+                    <div class="month-card">
+                        <div class="month-header">
+                            <div class="month-emoji">⚡</div>
+                            <div>
+                                <div class="month-name">MAY 2026</div>
+                                <div class="month-tag">Circuits & Fields</div>
+                            </div>
+                        </div>
+                        <div class="month-subjects">
+                            <div class="subject-block">
+                                <div class="sb-title"><i class="fas fa-bolt"></i> Electric Circuits (Complete)</div>
+                                <ul class="sb-topics">
+                                    <li>Transient Response – DC & AC networks</li>
+                                    <li>Resonance, Sinusoidal Steady State</li>
+                                    <li>Two-port networks, 3-phase circuits</li>
+                                    <li>Star-Delta, Complex Power, Power Factor</li>
+                                </ul>
+                            </div>
+                            <div class="subject-block">
+                                <div class="sb-title"><i class="fas fa-magnet"></i> Electromagnetic Fields</div>
+                                <ul class="sb-topics">
+                                    <li>Coulomb's Law, Electric Field, Gauss's Law</li>
+                                    <li>Biot-Savart's Law, Ampere's Law</li>
+                                    <li>Faraday's Law, Inductance, Capacitance</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="month-target">
+                            <span>🎯 Week 1-2: Circuits Complete | Week 3-4: EMF</span>
+                        </div>
+                    </div>
+
+                    <div class="month-card">
+                        <div class="month-header">
+                            <div class="month-emoji">📡</div>
+                            <div>
+                                <div class="month-name">JUNE 2026</div>
+                                <div class="month-tag">Signals & Systems</div>
+                            </div>
+                        </div>
+                        <div class="month-subjects">
+                            <div class="subject-block">
+                                <div class="sb-title"><i class="fas fa-wave-square"></i> Signals & Systems</div>
+                                <ul class="sb-topics">
+                                    <li>Continuous & Discrete time signals</li>
+                                    <li>LTI Systems – Impulse response, Convolution</li>
+                                    <li>Fourier Series & Fourier Transform</li>
+                                    <li>Laplace Transform & Z-Transform</li>
+                                    <li>Sampling Theorem, RMS values</li>
+                                </ul>
+                            </div>
+                            <div class="subject-block">
+                                <div class="sb-title"><i class="fas fa-rotate"></i> Revision Month 1</div>
+                                <ul class="sb-topics">
+                                    <li>Solve 50+ PYQs from Math & Circuits</li>
+                                    <li>Identify weak areas</li>
+                                    <li>Make compact formula sheets</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="month-target">
+                            <span>🎯 Week 1-3: Signals & Systems | Week 4: Revision + PYQs</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="phase-block phase-core">
+                <div class="phase-header">
+                    <div class="phase-badge">PHASE 2</div>
+                    <div class="phase-title">High-Weightage Core Subjects</div>
+                    <div class="phase-dates">July 2026 – September 2026 (3 months)</div>
+                    <div class="phase-desc">Focus on the BIG THREE: Electrical Machines, Power Systems, Control Systems. These alone = 35-40 marks!</div>
+                </div>
+                <div class="months-grid">
+
+                    <div class="month-card">
+                        <div class="month-header">
+                            <div class="month-emoji">⚙️</div>
+                            <div>
+                                <div class="month-name">JULY 2026</div>
+                                <div class="month-tag">Electrical Machines</div>
+                            </div>
+                        </div>
+                        <div class="month-subjects">
+                            <div class="subject-block">
+                                <div class="sb-title"><i class="fas fa-cogs"></i> Electrical Machines</div>
+                                <ul class="sb-topics">
+                                    <li>Transformers – Equivalent circuit, OC/SC tests, Efficiency</li>
+                                    <li>3-phase transformers – Connections, Vector groups</li>
+                                    <li>DC Machines – Separately excited, Series, Shunt</li>
+                                    <li>Speed control of DC motors</li>
+                                    <li>Induction Machines – Torque-speed characteristics</li>
+                                    <li>Synchronous Machines – Generator & Motor</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="month-target">
+                            <span>🎯 Most critical month. Solve 80+ PYQs on machines!</span>
+                        </div>
+                    </div>
+
+                    <div class="month-card">
+                        <div class="month-header">
+                            <div class="month-emoji">🔌</div>
+                            <div>
+                                <div class="month-name">AUGUST 2026</div>
+                                <div class="month-tag">Power Systems</div>
+                            </div>
+                        </div>
+                        <div class="month-subjects">
+                            <div class="subject-block">
+                                <div class="sb-title"><i class="fas fa-plug"></i> Power Systems</div>
+                                <ul class="sb-topics">
+                                    <li>AC/DC Transmission, Line models, ABCD parameters</li>
+                                    <li>Per-unit system, Bus admittance matrix (Ybus)</li>
+                                    <li>Load Flow: Gauss-Seidel & Newton-Raphson</li>
+                                    <li>Symmetrical Components, Fault Analysis</li>
+                                    <li>Economic Load Dispatch, Voltage & Frequency control</li>
+                                    <li>Protection: Overcurrent, Differential, Distance relays</li>
+                                    <li>Circuit Breakers, Insulators</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="month-target">
+                            <span>🎯 2nd most important subject. Master fault analysis & load flow!</span>
+                        </div>
+                    </div>
+
+                    <div class="month-card">
+                        <div class="month-header">
+                            <div class="month-emoji">🎛️</div>
+                            <div>
+                                <div class="month-name">SEPTEMBER 2026</div>
+                                <div class="month-tag">Control Systems</div>
+                            </div>
+                        </div>
+                        <div class="month-subjects">
+                            <div class="subject-block">
+                                <div class="sb-title"><i class="fas fa-sliders-h"></i> Control Systems</div>
+                                <ul class="sb-topics">
+                                    <li>Transfer functions, Block diagrams, SFG – Mason's rule</li>
+                                    <li>Time domain: Transient & Steady-state analysis</li>
+                                    <li>Stability: Routh-Hurwitz Criterion</li>
+                                    <li>Root Locus technique</li>
+                                    <li>Frequency Domain: Bode plots, Nyquist criterion</li>
+                                    <li>Lead, Lag, PID Controllers</li>
+                                    <li>State-space representation & solution</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="month-target">
+                            <span>🎯 3rd high-weightage subject. Graph-based questions = easy marks!</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="phase-block phase-advanced">
+                <div class="phase-header">
+                    <div class="phase-badge">PHASE 3</div>
+                    <div class="phase-title">Electronics & Remaining Subjects</div>
+                    <div class="phase-dates">October 2026 – November 2026 (2 months)</div>
+                    <div class="phase-desc">Complete remaining sections. Electronics, Power Electronics, Measurements, GA.</div>
+                </div>
+                <div class="months-grid">
+
+                    <div class="month-card">
+                        <div class="month-header">
+                            <div class="month-emoji">💡</div>
+                            <div>
+                                <div class="month-name">OCTOBER 2026</div>
+                                <div class="month-tag">Analog & Digital + Measurements</div>
+                            </div>
+                        </div>
+                        <div class="month-subjects">
+                            <div class="subject-block">
+                                <div class="sb-title"><i class="fas fa-microchip"></i> Analog & Digital Electronics</div>
+                                <ul class="sb-topics">
+                                    <li>Diode circuits – Clipping, Clamping, Rectifiers</li>
+                                    <li>BJT/MOSFET Amplifiers – Biasing, Frequency response</li>
+                                    <li>Op-Amp circuits, Active Filters (Sallen-Key)</li>
+                                    <li>Oscillators, VCOs, 555 Timer</li>
+                                    <li>Combinational Logic – MUX, DeMUX, Decoders</li>
+                                    <li>Sequential Logic – Flip-flops, Counters, Registers</li>
+                                    <li>ADC & DAC converters</li>
+                                </ul>
+                            </div>
+                            <div class="subject-block">
+                                <div class="sb-title"><i class="fas fa-tachometer-alt"></i> Measurements</div>
+                                <ul class="sb-topics">
+                                    <li>Bridges (Wheatstone, Maxwell, etc.) & Potentiometers</li>
+                                    <li>Instrument Transformers (CT, PT)</li>
+                                    <li>Digital Multimeters, Oscilloscopes</li>
+                                    <li>Error Analysis</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="month-target">
+                            <span>🎯 Week 1-3: Electronics | Week 4: Measurements</span>
+                        </div>
+                    </div>
+
+                    <div class="month-card">
+                        <div class="month-header">
+                            <div class="month-emoji">🔋</div>
+                            <div>
+                                <div class="month-name">NOVEMBER 2026</div>
+                                <div class="month-tag">Power Electronics + GA</div>
+                            </div>
+                        </div>
+                        <div class="month-subjects">
+                            <div class="subject-block">
+                                <div class="sb-title"><i class="fas fa-charging-station"></i> Power Electronics</div>
+                                <ul class="sb-topics">
+                                    <li>Thyristor, MOSFET, IGBT – V-I characteristics, Gate circuits</li>
+                                    <li>DC-DC Converters: Buck, Boost, Buck-Boost</li>
+                                    <li>Rectifiers: Single & 3-phase uncontrolled</li>
+                                    <li>Thyristor-based converters, Voltage source inverters</li>
+                                    <li>Single & 3-phase inverters, SPWM technique</li>
+                                    <li>Power factor & Distortion factor</li>
+                                </ul>
+                            </div>
+                            <div class="subject-block">
+                                <div class="sb-title"><i class="fas fa-brain"></i> General Aptitude</div>
+                                <ul class="sb-topics">
+                                    <li>Verbal ability – Vocabulary, Reading comprehension</li>
+                                    <li>Critical reasoning, Sentence completion</li>
+                                    <li>Quantitative aptitude – Ratios, Time-speed, Series</li>
+                                    <li>Spatial reasoning, Data interpretation</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="month-target">
+                            <span>🎯 Week 1-3: Power Electronics | Week 4: GA + All subjects quick revision</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Phase 4 -->
+            <div class="phase-block phase-revision">
+                <div class="phase-header">
+                    <div class="phase-badge">PHASE 4</div>
+                    <div class="phase-title">Intensive Revision & Mock Tests</div>
+                    <div class="phase-dates">December 2026 – February 2027 (3 months)</div>
+                    <div class="phase-desc">Full syllabus revision. Daily mock tests. PYQ analysis. Weak area fixing. Final sprint!</div>
+                </div>
+                <div class="months-grid">
+
+                    <div class="month-card">
+                        <div class="month-header">
+                            <div class="month-emoji">🔄</div>
+                            <div>
+                                <div class="month-name">DECEMBER 2026</div>
+                                <div class="month-tag">First Full Revision</div>
+                            </div>
+                        </div>
+                        <div class="month-subjects">
+                            <div class="subject-block">
+                                <div class="sb-title"><i class="fas fa-redo"></i> Revision Strategy</div>
+                                <ul class="sb-topics">
+                                    <li>Re-read formula sheets for all subjects</li>
+                                    <li>Solve 2 full mock tests per week</li>
+                                    <li>Analyze mistakes deeply – don't repeat errors</li>
+                                    <li>Complete ALL PYQs from 2015–2025</li>
+                                    <li>Focus on high-weightage topics only</li>
+                                    <li>Create 1-page summary per subject</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="month-target">
+                            <span>🎯 Target: Complete all PYQs, 8 full mock tests, 2 per week</span>
+                        </div>
+                    </div>
+
+                    <div class="month-card">
+                        <div class="month-header">
+                            <div class="month-emoji">🚀</div>
+                            <div>
+                                <div class="month-name">JANUARY 2027</div>
+                                <div class="month-tag">Final Preparation Sprint</div>
+                            </div>
+                        </div>
+                        <div class="month-subjects">
+                            <div class="subject-block">
+                                <div class="sb-title"><i class="fas fa-rocket"></i> Final Sprint</div>
+                                <ul class="sb-topics">
+                                    <li>3 full mock tests per week under exam conditions</li>
+                                    <li>Speed improvement drills – time management</li>
+                                    <li>NAT question special practice (no negative marking!)</li>
+                                    <li>Revise all formula sheets daily (30 min)</li>
+                                    <li>Weak subject intensive revision</li>
+                                    <li>Practice official GATE mock test (IIT Guwahati)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="month-target">
+                            <span>🎯 Target: 12 full mocks, score 60+ consistently, Time: &lt;2.5 hrs per paper</span>
+                        </div>
+                    </div>
+
+                    <div class="month-card exam-month">
+                        <div class="month-header">
+                            <div class="month-emoji">🏆</div>
+                            <div>
+                                <div class="month-name">FEBRUARY 2027</div>
+                                <div class="month-tag">EXAM MONTH – You've Got This!</div>
+                            </div>
+                        </div>
+                        <div class="month-subjects">
+                            <div class="subject-block">
+                                <div class="sb-title"><i class="fas fa-trophy"></i> Exam Week Strategy</div>
+                                <ul class="sb-topics">
+                                    <li><strong>Week before:</strong> Only revision – no new topics</li>
+                                    <li>Sleep 7–8 hours every night</li>
+                                    <li>Light revision: formula sheets & key concepts</li>
+                                    <li><strong>Day before:</strong> Rest, light reading, confidence boost</li>
+                                    <li><strong>Exam Day:</strong> Attempt GA first (easy 15 marks)</li>
+                                    <li>Skip difficult MCQs (avoid negative marks)</li>
+                                    <li>Attempt ALL NAT questions (no negative marking!)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="month-target">
+                            <span>🏆 EXAM DAY STRATEGY: GA → Math → High-weight subjects → Rest</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Overall Timeline Visual -->
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-stream"></i> 10-Month Visual Timeline</h3>
+            </div>
+            <div class="card-body">
+                <div class="timeline-visual">
+                    <div class="tl-item tl-phase1">
+                        <div class="tl-month">APR</div>
+                        <div class="tl-bar"></div>
+                        <div class="tl-label">Engg Maths + Circuits Start</div>
+                    </div>
+                    <div class="tl-item tl-phase1">
+                        <div class="tl-month">MAY</div>
+                        <div class="tl-bar"></div>
+                        <div class="tl-label">Circuits Complete + EMF</div>
+                    </div>
+                    <div class="tl-item tl-phase1">
+                        <div class="tl-month">JUN</div>
+                        <div class="tl-bar"></div>
+                        <div class="tl-label">Signals & Systems</div>
+                    </div>
+                    <div class="tl-item tl-phase2">
+                        <div class="tl-month">JUL</div>
+                        <div class="tl-bar"></div>
+                        <div class="tl-label">Electrical Machines</div>
+                    </div>
+                    <div class="tl-item tl-phase2">
+                        <div class="tl-month">AUG</div>
+                        <div class="tl-bar"></div>
+                        <div class="tl-label">Power Systems</div>
+                    </div>
+                    <div class="tl-item tl-phase2">
+                        <div class="tl-month">SEP</div>
+                        <div class="tl-bar"></div>
+                        <div class="tl-label">Control Systems</div>
+                    </div>
+                    <div class="tl-item tl-phase3">
+                        <div class="tl-month">OCT</div>
+                        <div class="tl-bar"></div>
+                        <div class="tl-label">Electronics + Measurements</div>
+                    </div>
+                    <div class="tl-item tl-phase3">
+                        <div class="tl-month">NOV</div>
+                        <div class="tl-bar"></div>
+                        <div class="tl-label">Power Electronics + GA</div>
+                    </div>
+                    <div class="tl-item tl-phase4">
+                        <div class="tl-month">DEC</div>
+                        <div class="tl-bar"></div>
+                        <div class="tl-label">Full Revision + PYQs</div>
+                    </div>
+                    <div class="tl-item tl-phase4">
+                        <div class="tl-month">JAN</div>
+                        <div class="tl-bar"></div>
+                        <div class="tl-label">Mock Tests Sprint</div>
+                    </div>
+                    <div class="tl-item tl-exam">
+                        <div class="tl-month">FEB</div>
+                        <div class="tl-bar"></div>
+                        <div class="tl-label">🏆 GATE 2027 EXAM!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== SYLLABUS PAGE ====================== -->
+    <section class="page" id="page-syllabus">
+        <div class="page-header">
+            <h1>📚 Complete GATE 2027 EE Syllabus</h1>
+            <p class="subtitle">All 10 Sections | Official IIT Guwahati Syllabus</p>
+        </div>
+
+        <div class="syllabus-search-bar">
+            <input type="text" id="syllabusSearch" placeholder="🔍 Search topics, subtopics..." oninput="searchSyllabus(this.value)">
+        </div>
+
+        <div class="syllabus-container" id="syllabusContainer">
+
+            <div class="syllabus-section" data-section="math">
+                <div class="ss-header" onclick="toggleSection(this)">
+                    <div class="ss-left">
+                        <span class="ss-num">S1</span>
+                        <div>
+                            <div class="ss-title">Engineering Mathematics</div>
+                            <div class="ss-meta">~13 marks | All branches | Must Do</div>
+                        </div>
+                    </div>
+                    <div class="ss-right">
+                        <span class="ss-marks-badge must">13 Marks</span>
+                        <i class="fas fa-chevron-down ss-toggle"></i>
+                    </div>
+                </div>
+                <div class="ss-body">
+                    <div class="topics-grid">
+                        <div class="topic-item"><div class="t-name">Linear Algebra</div><ul><li>Matrix Algebra, Determinants</li><li>Systems of Linear Equations (Cramer, Gaussian)</li><li>Eigenvalues & Eigenvectors</li><li>Cayley-Hamilton Theorem</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Calculus</div><ul><li>Mean Value Theorems (Rolle's, Lagrange's)</li><li>Definite & Improper Integrals</li><li>Partial Derivatives, Maxima-Minima</li><li>Multiple Integrals (Double, Triple)</li><li>Fourier Series (Half-range, Full-range)</li><li>Vector Calculus – Divergence, Curl, Gradient</li><li>Stokes', Gauss', Green's Theorems</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Differential Equations</div><ul><li>1st Order – Linear & Nonlinear ODEs</li><li>Higher Order ODEs with constant coefficients</li><li>Method of Variation of Parameters</li><li>Cauchy's & Euler's Equations</li><li>PDEs – Separation of Variables</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Complex Variables</div><ul><li>Analytic Functions, Cauchy-Riemann Equations</li><li>Cauchy's Integral Theorem & Formula</li><li>Taylor & Laurent Series</li><li>Residue Theorem, Contour Integration</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Probability & Statistics</div><ul><li>Sampling Theorems, Conditional Probability</li><li>Mean, Median, Mode, Standard Deviation</li><li>Discrete Distributions: Binomial, Poisson</li><li>Continuous Distribution: Normal</li><li>Correlation & Regression Analysis</li></ul></div>
+                    </div>
+                    <div class="resource-links">
+                        <a href="https://www.youtube.com/playlist?list=PLdo5W4Nhv31bbKLUAh_tPhpVYHaFcCM4l" target="_blank" class="res-link nptel"><i class="fab fa-youtube"></i> GATE Math PYQs – YouTube</a>
+                        <a href="https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/" target="_blank" class="res-link mit"><i class="fas fa-graduation-cap"></i> MIT OCW Calculus</a>
+                        <a href="https://questions.examside.com/past-years/gate/gate-ee/engineering-mathematics" target="_blank" class="res-link practice"><i class="fas fa-pencil-alt"></i> PYQs – ExamSide</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="syllabus-section" data-section="circuits">
+                <div class="ss-header" onclick="toggleSection(this)">
+                    <div class="ss-left">
+                        <span class="ss-num">S2</span>
+                        <div>
+                            <div class="ss-title">Electric Circuits</div>
+                            <div class="ss-meta">~8–10 marks | Foundation for all EE subjects</div>
+                        </div>
+                    </div>
+                    <div class="ss-right">
+                        <span class="ss-marks-badge high">~9 Marks</span>
+                        <i class="fas fa-chevron-down ss-toggle"></i>
+                    </div>
+                </div>
+                <div class="ss-body">
+                    <div class="topics-grid">
+                        <div class="topic-item"><div class="t-name">Network Elements & Sources</div><ul><li>Ideal Voltage & Current Sources</li><li>Dependent Sources (VCVS, CCCS, etc.)</li><li>R, L, C, M Elements</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Network Solution Methods</div><ul><li>Kirchhoff's Current Law (KCL)</li><li>Kirchhoff's Voltage Law (KVL)</li><li>Node Analysis (Nodal Method)</li><li>Mesh Analysis (Loop Method)</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Network Theorems</div><ul><li>Superposition Theorem</li><li>Thevenin's Theorem</li><li>Norton's Theorem</li><li>Maximum Power Transfer Theorem</li><li>Reciprocity & Millman's Theorem</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Dynamic Analysis</div><ul><li>Transient Response of DC & AC networks</li><li>Initial & Final Value Theorems</li><li>Sinusoidal Steady-State Analysis</li><li>Series & Parallel Resonance, Q-factor</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Advanced Topics</div><ul><li>Two-Port Networks (Z, Y, h, ABCD parameters)</li><li>Balanced 3-phase Circuits</li><li>Star-Delta Transformation</li><li>Complex Power & Power Factor in AC circuits</li></ul></div>
+                    </div>
+                    <div class="resource-links">
+                        <a href="https://onlinecourses.nptel.ac.in/noc26_ee48/preview" target="_blank" class="res-link nptel"><i class="fas fa-video"></i> NPTEL Network Analysis</a>
+                        <a href="https://www.allaboutcircuits.com/textbook/" target="_blank" class="res-link free"><i class="fas fa-book"></i> AllAboutCircuits Free Textbook</a>
+                        <a href="https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/" target="_blank" class="res-link mit"><i class="fas fa-graduation-cap"></i> MIT OCW 6.002</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="syllabus-section" data-section="emf">
+                <div class="ss-header" onclick="toggleSection(this)">
+                    <div class="ss-left">
+                        <span class="ss-num">S3</span>
+                        <div>
+                            <div class="ss-title">Electromagnetic Fields</div>
+                            <div class="ss-meta">~4–6 marks | Conceptual subject</div>
+                        </div>
+                    </div>
+                    <div class="ss-right">
+                        <span class="ss-marks-badge medium">~5 Marks</span>
+                        <i class="fas fa-chevron-down ss-toggle"></i>
+                    </div>
+                </div>
+                <div class="ss-body">
+                    <div class="topics-grid">
+                        <div class="topic-item"><div class="t-name">Electrostatics</div><ul><li>Coulomb's Law, Electric Field Intensity</li><li>Electric Flux Density (D), Gauss's Law</li><li>Divergence Theorem</li><li>Electric Potential, Gradient</li><li>Capacitance Configurations</li><li>Effect of Dielectric Medium</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Magnetostatics</div><ul><li>Biot-Savart's Law</li><li>Ampere's Circuital Law, Curl</li><li>Faraday's Law of EM Induction</li><li>Lorentz Force</li><li>Inductance (Self & Mutual)</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Magnetic Circuits</div><ul><li>Magnetomotive Force (MMF)</li><li>Reluctance & Permeance</li><li>Simple Magnetic Circuit Configurations</li></ul></div>
+                    </div>
+                    <div class="resource-links">
+                        <a href="https://www.youtube.com/results?search_query=electromagnetic+fields+GATE+EE" target="_blank" class="res-link youtube"><i class="fab fa-youtube"></i> EMF GATE Videos</a>
+                        <a href="https://practicepaper.in/gate-ee/electromagnetic-fields" target="_blank" class="res-link practice"><i class="fas fa-pencil-alt"></i> EMF PYQs Practice</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="syllabus-section" data-section="signals">
+                <div class="ss-header" onclick="toggleSection(this)">
+                    <div class="ss-left">
+                        <span class="ss-num">S4</span>
+                        <div>
+                            <div class="ss-title">Signals & Systems</div>
+                            <div class="ss-meta">~7–9 marks | Strong transform skills needed</div>
+                        </div>
+                    </div>
+                    <div class="ss-right">
+                        <span class="ss-marks-badge high">~8 Marks</span>
+                        <i class="fas fa-chevron-down ss-toggle"></i>
+                    </div>
+                </div>
+                <div class="ss-body">
+                    <div class="topics-grid">
+                        <div class="topic-item"><div class="t-name">Signal Fundamentals</div><ul><li>Continuous & Discrete Time Signals</li><li>Shifting, Scaling, Reflection</li><li>Energy & Power signals</li><li>RMS value & Average value of periodic waveforms</li></ul></div>
+                        <div class="topic-item"><div class="t-name">System Properties</div><ul><li>LTI (Linear Time-Invariant) Systems</li><li>Causal & Non-causal Systems</li><li>Stable, Unstable Systems</li><li>Convolution (Continuous & Discrete)</li><li>Impulse Response</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Frequency Domain</div><ul><li>Fourier Series (Continuous & Discrete Periodic)</li><li>Fourier Transform (CTFT & DTFT)</li><li>Properties of Fourier Transform</li><li>Sampling Theorem, Aliasing</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Transforms</div><ul><li>Laplace Transform – Properties, ROC</li><li>Inverse Laplace (Partial Fractions)</li><li>Z-Transform – Properties, ROC</li><li>Inverse Z-Transform</li><li>Transfer Function from Transforms</li></ul></div>
+                    </div>
+                    <div class="resource-links">
+                        <a href="https://onlinecourses.nptel.ac.in/noc24_ee36/preview" target="_blank" class="res-link nptel"><i class="fas fa-video"></i> NPTEL Signals & Systems</a>
+                        <a href="https://www.youtube.com/playlist?list=PLBlnK6fEyqRhG6s3jYIU48CqsT5cyiDTO" target="_blank" class="res-link youtube"><i class="fab fa-youtube"></i> Neso Academy Playlist</a>
+                        <a href="https://practicepaper.in/gate-ee/signals-and-systems" target="_blank" class="res-link practice"><i class="fas fa-pencil-alt"></i> S&S PYQs</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="syllabus-section" data-section="machines">
+                <div class="ss-header" onclick="toggleSection(this)">
+                    <div class="ss-left">
+                        <span class="ss-num">S5</span>
+                        <div>
+                            <div class="ss-title">Electrical Machines</div>
+                            <div class="ss-meta">~11–13 marks | 2nd highest weightage! ⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <div class="ss-right">
+                        <span class="ss-marks-badge very-high">~12 Marks</span>
+                        <i class="fas fa-chevron-down ss-toggle"></i>
+                    </div>
+                </div>
+                <div class="ss-body">
+                    <div class="topics-grid">
+                        <div class="topic-item"><div class="t-name">Transformers</div><ul><li>Ideal Transformer – EMF equation, Turns ratio</li><li>Equivalent Circuit, Phasor Diagram</li><li>OC Test (No-load) & SC Test (Short-circuit)</li><li>Regulation & Efficiency calculations</li><li>3-phase Transformers – Connections (Star-Delta, etc.)</li><li>Vector Groups, Parallel Operation</li><li>Auto-transformer</li></ul></div>
+                        <div class="topic-item"><div class="t-name">DC Machines</div><ul><li>Construction, EMF & Torque equations</li><li>Separately Excited, Series, Shunt, Compound</li><li>DC Generator & Motor characteristics</li><li>Speed Control methods</li><li>Starting methods for DC motors</li><li>Efficiency & Losses</li></ul></div>
+                        <div class="topic-item"><div class="t-name">3-Phase Induction Motors</div><ul><li>Working principle, Rotating magnetic field</li><li>Slip, Rotor frequency, Rotor EMF</li><li>Equivalent Circuit</li><li>Torque-Speed characteristics</li><li>No-load & Blocked-rotor tests</li><li>Starting methods (DOL, Star-Delta, Autotransformer)</li><li>Speed control (V/f, rotor resistance, etc.)</li><li>Single-phase Induction Motor principle</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Synchronous Machines</div><ul><li>Construction – Cylindrical & Salient pole rotors</li><li>EMF equation, Phasor diagram</li><li>Equivalent circuit, Synchronous reactance</li><li>Generator: Regulation, Parallel operation, Load sharing</li><li>Motor: Starting methods, V-curves, Hunting</li><li>Salient Pole – Two-reaction theory</li></ul></div>
+                    </div>
+                    <div class="resource-links">
+                        <a href="https://onlinecourses.nptel.ac.in/noc20_ee60/preview" target="_blank" class="res-link nptel"><i class="fas fa-video"></i> NPTEL Electrical Machines I</a>
+                        <a href="https://nptel.ac.in/courses/108105131" target="_blank" class="res-link nptel"><i class="fas fa-video"></i> NPTEL Electrical Machines II</a>
+                        <a href="https://practicepaper.in/gate-ee/electrical-machines" target="_blank" class="res-link practice"><i class="fas fa-pencil-alt"></i> Machines PYQs</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="syllabus-section" data-section="power">
+                <div class="ss-header" onclick="toggleSection(this)">
+                    <div class="ss-left">
+                        <span class="ss-num">S6</span>
+                        <div>
+                            <div class="ss-title">Power Systems</div>
+                            <div class="ss-meta">~12–14 marks | HIGHEST weightage in GATE EE ⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <div class="ss-right">
+                        <span class="ss-marks-badge very-high">~13 Marks</span>
+                        <i class="fas fa-chevron-down ss-toggle"></i>
+                    </div>
+                </div>
+                <div class="ss-body">
+                    <div class="topics-grid">
+                        <div class="topic-item"><div class="t-name">Transmission & Generation</div><ul><li>AC & DC Transmission concepts</li><li>Transmission Line Models (Short, Medium, Long)</li><li>ABCD Parameters, Power flow equations</li><li>Cables – Types, capacitance</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Power Flow Analysis</div><ul><li>Per-unit System (PU)</li><li>Bus Admittance Matrix (Ybus)</li><li>Gauss-Seidel Load Flow Method</li><li>Newton-Raphson Load Flow Method</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Fault Analysis</div><ul><li>Symmetrical Components (Positive, Negative, Zero seq.)</li><li>Symmetrical Faults (3-phase)</li><li>Unsymmetrical Faults (SLG, DLG, LL)</li><li>Fault current calculations</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Control & Protection</div><ul><li>Economic Load Dispatch (ELD)</li><li>Voltage & Frequency Control</li><li>Power Factor Correction</li><li>System Stability – Equal Area Criterion</li><li>Series & Shunt Compensation (FACTS)</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Protection Systems</div><ul><li>Overcurrent Protection</li><li>Differential Protection</li><li>Directional & Distance Protection</li><li>Circuit Breakers – Types, ratings</li><li>Insulators & Electric field distribution</li></ul></div>
+                    </div>
+                    <div class="resource-links">
+                        <a href="https://onlinecourses.nptel.ac.in/noc19_ee62/preview" target="_blank" class="res-link nptel"><i class="fas fa-video"></i> NPTEL Power System Analysis</a>
+                        <a href="https://practicepaper.in/gate-ee/power-systems" target="_blank" class="res-link practice"><i class="fas fa-pencil-alt"></i> Power Systems PYQs</a>
+                        <a href="https://ee.gateoverflow.in/" target="_blank" class="res-link practice"><i class="fas fa-question-circle"></i> GATE Overflow EE</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="syllabus-section" data-section="control">
+                <div class="ss-header" onclick="toggleSection(this)">
+                    <div class="ss-left">
+                        <span class="ss-num">S7</span>
+                        <div>
+                            <div class="ss-title">Control Systems</div>
+                            <div class="ss-meta">~9–11 marks | 3rd highest weightage ⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <div class="ss-right">
+                        <span class="ss-marks-badge very-high">~10 Marks</span>
+                        <i class="fas fa-chevron-down ss-toggle"></i>
+                    </div>
+                </div>
+                <div class="ss-body">
+                    <div class="topics-grid">
+                        <div class="topic-item"><div class="t-name">Mathematical Modeling</div><ul><li>Transfer Function Derivation</li><li>Block Diagram Algebra & Reduction</li><li>Signal Flow Graph (SFG)</li><li>Mason's Gain Formula</li><li>Feedback Principle</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Time Domain Analysis</div><ul><li>Transient Response (Underdamped, Overdamped, Critical)</li><li>Step, Ramp, Impulse response</li><li>Steady-State Error & Error constants (Kp, Kv, Ka)</li><li>Type 0, 1, 2 Systems</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Stability Analysis</div><ul><li>Routh-Hurwitz Stability Criterion</li><li>Root Locus Technique (construction rules)</li><li>Nyquist Stability Criterion</li><li>Gain Margin & Phase Margin</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Frequency Domain</div><ul><li>Bode Plot (Magnitude & Phase)</li><li>Polar Plots & Nyquist Plots</li><li>Resonant frequency, Bandwidth</li><li>Lead & Lag Network design</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Controllers & State Space</div><ul><li>P, PI, PD, PID Controllers</li><li>Lead-Lag Compensators</li><li>State-Space Representation (A, B, C, D matrices)</li><li>Solution of State Equations (Matrix Exponential)</li><li>Controllability & Observability</li></ul></div>
+                    </div>
+                    <div class="resource-links">
+                        <a href="https://onlinecourses.nptel.ac.in/noc20_ee90/preview" target="_blank" class="res-link nptel"><i class="fas fa-video"></i> NPTEL Control Systems</a>
+                        <a href="https://www.youtube.com/playlist?list=PLBlnK6fEyqRh6isJ01MBnbNpV3ZsktSyS" target="_blank" class="res-link youtube"><i class="fab fa-youtube"></i> Neso Academy Control Systems</a>
+                        <a href="https://practicepaper.in/gate-ee/control-systems" target="_blank" class="res-link practice"><i class="fas fa-pencil-alt"></i> Control Systems PYQs</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="syllabus-section" data-section="measurements">
+                <div class="ss-header" onclick="toggleSection(this)">
+                    <div class="ss-left">
+                        <span class="ss-num">S8</span>
+                        <div>
+                            <div class="ss-title">Electrical & Electronic Measurements</div>
+                            <div class="ss-meta">~3–5 marks | Easy scoring section</div>
+                        </div>
+                    </div>
+                    <div class="ss-right">
+                        <span class="ss-marks-badge medium">~4 Marks</span>
+                        <i class="fas fa-chevron-down ss-toggle"></i>
+                    </div>
+                </div>
+                <div class="ss-body">
+                    <div class="topics-grid">
+                        <div class="topic-item"><div class="t-name">Bridges & Instruments</div><ul><li>Wheatstone Bridge, Kelvin Double Bridge</li><li>Maxwell's Bridge, Hay Bridge, Schering Bridge</li><li>Potentiometers – DC & AC types</li><li>Digital Voltmeters & Multimeters</li><li>Oscilloscopes – CRO applications</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Measurement Parameters</div><ul><li>Measurement of Voltage, Current, Power</li><li>Energy Measurement (Energy meters)</li><li>Power Factor Measurement</li><li>Phase, Time & Frequency Measurement</li><li>Instrument Transformers (CT & PT)</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Error Analysis</div><ul><li>Systematic & Random Errors</li><li>Accuracy, Precision, Resolution</li><li>Propagation of Errors</li><li>Statistical analysis of measurements</li></ul></div>
+                    </div>
+                    <div class="resource-links">
+                        <a href="https://onlinecourses.nptel.ac.in/noc23_ee112/preview" target="_blank" class="res-link nptel"><i class="fas fa-video"></i> NPTEL Electrical Measurements (GATE-aligned)</a>
+                        <a href="https://practicepaper.in/gate-ee/electrical-and-electronic-measurements" target="_blank" class="res-link practice"><i class="fas fa-pencil-alt"></i> Measurements PYQs</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="syllabus-section" data-section="electronics">
+                <div class="ss-header" onclick="toggleSection(this)">
+                    <div class="ss-left">
+                        <span class="ss-num">S9</span>
+                        <div>
+                            <div class="ss-title">Analog & Digital Electronics</div>
+                            <div class="ss-meta">~7–9 marks | Mixed analog & digital</div>
+                        </div>
+                    </div>
+                    <div class="ss-right">
+                        <span class="ss-marks-badge high">~8 Marks</span>
+                        <i class="fas fa-chevron-down ss-toggle"></i>
+                    </div>
+                </div>
+                <div class="ss-body">
+                    <div class="topics-grid">
+                        <div class="topic-item"><div class="t-name">Analog Electronics</div><ul><li>Diode Circuits – Clipping, Clamping, Rectifiers</li><li>Zener Diode applications</li><li>BJT & MOSFET – Biasing, Operating points</li><li>Small-signal equivalent circuits</li><li>Amplifier – Frequency response, Bandwidth</li><li>Feedback Amplifiers, Oscillators</li><li>Op-Amp – Inverting, Non-inverting, Diff. amplifier</li><li>Op-Amp applications – Integrator, Differentiator</li><li>Active Filters – Sallen-Key, Butterworth</li><li>VCOs, 555 Timer circuits</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Digital Electronics</div><ul><li>Boolean Algebra & Minimization (K-map)</li><li>Logic Gates, Combinational Circuits</li><li>Multiplexers (MUX) & Demultiplexers (DEMUX)</li><li>Encoders, Decoders, Comparators</li><li>Schmitt Triggers</li><li>Sequential Logic – SR, JK, D, T Flip-flops</li><li>Counters (Synchronous & Asynchronous)</li><li>Registers, Shift Registers</li><li>Sample & Hold Circuits</li><li>A/D & D/A Converters</li></ul></div>
+                    </div>
+                    <div class="resource-links">
+                        <a href="https://onlinecourses.nptel.ac.in/noc22_ee74/preview" target="_blank" class="res-link nptel"><i class="fas fa-video"></i> NPTEL Analog Electronic Circuits</a>
+                        <a href="https://onlinecourses.nptel.ac.in/noc21_ee10/preview" target="_blank" class="res-link nptel"><i class="fas fa-video"></i> NPTEL Digital Electronic Circuits</a>
+                        <a href="https://www.allaboutcircuits.com/textbook/semiconductors/" target="_blank" class="res-link free"><i class="fas fa-book"></i> AllAboutCircuits Semiconductors</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="syllabus-section" data-section="powerelec">
+                <div class="ss-header" onclick="toggleSection(this)">
+                    <div class="ss-left">
+                        <span class="ss-num">S10</span>
+                        <div>
+                            <div class="ss-title">Power Electronics</div>
+                            <div class="ss-meta">~6–8 marks | Practical calculations needed</div>
+                        </div>
+                    </div>
+                    <div class="ss-right">
+                        <span class="ss-marks-badge high">~7 Marks</span>
+                        <i class="fas fa-chevron-down ss-toggle"></i>
+                    </div>
+                </div>
+                <div class="ss-body">
+                    <div class="topics-grid">
+                        <div class="topic-item"><div class="t-name">Power Devices</div><ul><li>Thyristor (SCR) – V-I characteristics, Triggering</li><li>MOSFET Power devices</li><li>IGBT – Characteristics, Gate circuits</li><li>Comparison of Power switches</li></ul></div>
+                        <div class="topic-item"><div class="t-name">DC-DC Converters</div><ul><li>Buck Converter – Duty cycle, Output voltage</li><li>Boost Converter – Voltage gain</li><li>Buck-Boost Converter</li><li>CCM vs DCM operation</li></ul></div>
+                        <div class="topic-item"><div class="t-name">AC-DC Converters (Rectifiers)</div><ul><li>Single-phase uncontrolled rectifiers (HW, FW)</li><li>3-phase uncontrolled rectifiers</li><li>Thyristor-based (controlled) rectifiers</li><li>Voltage Source Converters (Bidirectional)</li><li>Harmonics, THD, Power Factor</li></ul></div>
+                        <div class="topic-item"><div class="t-name">Inverters</div><ul><li>Single-phase Voltage Source Inverter</li><li>3-phase Voltage Source Inverter</li><li>Current Source Inverters</li><li>SPWM (Sinusoidal Pulse Width Modulation)</li><li>Harmonic analysis of inverter outputs</li></ul></div>
+                    </div>
+                    <div class="resource-links">
+                        <a href="https://onlinecourses.nptel.ac.in/noc21_ee01/preview" target="_blank" class="res-link nptel"><i class="fas fa-video"></i> NPTEL Power Electronics</a>
+                        <a href="https://nptel.ac.in/courses/108105066" target="_blank" class="res-link nptel"><i class="fas fa-video"></i> NPTEL PE (Classic course)</a>
+                        <a href="https://practicepaper.in/gate-ee/power-electronics" target="_blank" class="res-link practice"><i class="fas fa-pencil-alt"></i> PE PYQs Practice</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ====================== WEEKLY PLANNER PAGE ====================== -->
+    <section class="page" id="page-weekly">
+        <div class="page-header">
+            <h1>📋 Weekly Study Planner</h1>
+            <p class="subtitle">Plan your week | Track daily goals | 9 PM – 12 AM session</p>
+        </div>
+        <div id="weeklyPlannerContent"></div>
+    </section>
+
+    <!-- ====================== RESOURCES PAGE ====================== -->
+    <section class="page" id="page-resources">
+        <div class="page-header">
+            <h1>🔗 Free Study Resources</h1>
+            <p class="subtitle">Handpicked free resources – NPTEL, YouTube, Books, Notes</p>
+        </div>
+
+        <div class="resources-grid">
+
+            <div class="res-category">
+                <div class="res-cat-header nptel-header">
+                    <i class="fas fa-video"></i>
+                    <h3>NPTEL Free Courses (IIT Faculty)</h3>
+                </div>
+                <div class="res-list">
+                    <a href="https://onlinecourses.nptel.ac.in/noc26_ee48/preview" target="_blank" class="res-card">
+                        <div class="rc-icon nptel-icon"><i class="fas fa-network-wired"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">Network Analysis</div>
+                            <div class="rc-sub">IIT | 12 weeks | Free | Electric Circuits</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://onlinecourses.nptel.ac.in/noc24_ee36/preview" target="_blank" class="res-card">
+                        <div class="rc-icon nptel-icon"><i class="fas fa-wave-square"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">Principles of Signals & Systems</div>
+                            <div class="rc-sub">IIT | 12 weeks | Free | S&S Complete</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://onlinecourses.nptel.ac.in/noc20_ee90/preview" target="_blank" class="res-card">
+                        <div class="rc-icon nptel-icon"><i class="fas fa-sliders-h"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">Control Systems</div>
+                            <div class="rc-sub">IIT | 12 weeks | Free | Classical Control Theory</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://onlinecourses.nptel.ac.in/noc20_ee60/preview" target="_blank" class="res-card">
+                        <div class="rc-icon nptel-icon"><i class="fas fa-cogs"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">Electrical Machines I</div>
+                            <div class="rc-sub">IIT | Transformer + DC Machines | Free</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://nptel.ac.in/courses/108105131" target="_blank" class="res-card">
+                        <div class="rc-icon nptel-icon"><i class="fas fa-cogs"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">Electrical Machines II (AC Machines)</div>
+                            <div class="rc-sub">IIT | Induction + Synchronous Machines | Free</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://onlinecourses.nptel.ac.in/noc19_ee62/preview" target="_blank" class="res-card">
+                        <div class="rc-icon nptel-icon"><i class="fas fa-plug"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">Power System Analysis</div>
+                            <div class="rc-sub">IIT | 12 weeks | Load flow, Faults | Free</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://onlinecourses.nptel.ac.in/noc21_ee01/preview" target="_blank" class="res-card">
+                        <div class="rc-icon nptel-icon"><i class="fas fa-charging-station"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">Fundamentals of Power Electronics</div>
+                            <div class="rc-sub">IIT | Converters, Rectifiers, Inverters | Free</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://onlinecourses.nptel.ac.in/noc23_ee112/preview" target="_blank" class="res-card">
+                        <div class="rc-icon nptel-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">Electrical Measurement & Instruments</div>
+                            <div class="rc-sub">IIT | GATE EE Aligned course | Free</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://onlinecourses.nptel.ac.in/noc22_ee74/preview" target="_blank" class="res-card">
+                        <div class="rc-icon nptel-icon"><i class="fas fa-microchip"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">Analog Electronic Circuits</div>
+                            <div class="rc-sub">IIT | 12 weeks | Amplifiers, Op-amps | Free</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://onlinecourses.nptel.ac.in/noc21_ee10/preview" target="_blank" class="res-card">
+                        <div class="rc-icon nptel-icon"><i class="fas fa-microchip"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">Digital Electronic Circuits</div>
+                            <div class="rc-sub">IIT | 12 weeks | Logic, Flip-flops | Free</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="res-category">
+                <div class="res-cat-header youtube-header">
+                    <i class="fab fa-youtube"></i>
+                    <h3>YouTube Free Playlists</h3>
+                </div>
+                <div class="res-list">
+                    <a href="https://www.youtube.com/playlist?list=PLBlnK6fEyqRgLR-hMp7wem-bdVN1iEhsh" target="_blank" class="res-card">
+                        <div class="rc-icon yt-icon"><i class="fab fa-youtube"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">Neso Academy – Network Theory</div>
+                            <div class="rc-sub">208 lessons | Complete circuits coverage | FREE</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://www.youtube.com/playlist?list=PLBlnK6fEyqRhG6s3jYIU48CqsT5cyiDTO" target="_blank" class="res-card">
+                        <div class="rc-icon yt-icon"><i class="fab fa-youtube"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">Neso Academy – Signals & Systems</div>
+                            <div class="rc-sub">Complete S&S course | GATE aligned | FREE</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=gate+electrical+engineering+2027+preparation" target="_blank" class="res-card">
+                        <div class="rc-icon yt-icon"><i class="fab fa-youtube"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">GATE EE 2027 Preparation Videos</div>
+                            <div class="rc-sub">Multiple channels | Subject-wise | FREE</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=control+systems+gate+ee+full+course" target="_blank" class="res-card">
+                        <div class="rc-icon yt-icon"><i class="fab fa-youtube"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">Control Systems GATE EE Full Course</div>
+                            <div class="rc-sub">Bode, Nyquist, Root Locus | FREE</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=power+systems+GATE+EE+fault+analysis+load+flow" target="_blank" class="res-card">
+                        <div class="rc-icon yt-icon"><i class="fab fa-youtube"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">Power Systems GATE – Fault Analysis & Load Flow</div>
+                            <div class="rc-sub">Critical topics | Numericals | FREE</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=AfQxyVuLeCs" target="_blank" class="res-card">
+                        <div class="rc-icon yt-icon"><i class="fab fa-youtube"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">MIT 6.002 Circuits & Electronics</div>
+                            <div class="rc-sub">MIT OpenCourseWare | Full course | FREE</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="res-category">
+                <div class="res-cat-header books-header">
+                    <i class="fas fa-book"></i>
+                    <h3>Free Online Books & Notes</h3>
+                </div>
+                <div class="res-list">
+                    <a href="https://www.allaboutcircuits.com/textbook/" target="_blank" class="res-card">
+                        <div class="rc-icon book-icon"><i class="fas fa-book-open"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">AllAboutCircuits – Free Textbook</div>
+                            <div class="rc-sub">DC, AC, Semiconductors, Digital – Complete textbook FREE</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/" target="_blank" class="res-card">
+                        <div class="rc-icon book-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">MIT OCW – Circuits & Electronics 6.002</div>
+                            <div class="rc-sub">Lecture notes, Problem sets, Exams | ALL FREE</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://ocw.mit.edu/" target="_blank" class="res-card">
+                        <div class="rc-icon book-icon"><i class="fas fa-university"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">MIT OpenCourseWare – All EE Courses</div>
+                            <div class="rc-sub">Free lecture notes, assignments, exams from MIT</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://gate2026.iitg.ac.in/doc/GATE2026_Syllabus/EE_2026_Syllabus.pdf" target="_blank" class="res-card">
+                        <div class="rc-icon book-icon"><i class="fas fa-file-pdf"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">Official GATE EE Syllabus PDF</div>
+                            <div class="rc-sub">IIT Guwahati | GATE 2026 Official | FREE Download</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://gate2026.iitg.ac.in/doc/IB/GATE2026-IB-v23082025-2000.pdf" target="_blank" class="res-card">
+                        <div class="rc-icon book-icon"><i class="fas fa-file-pdf"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">GATE 2026 Information Brochure</div>
+                            <div class="rc-sub">IIT Guwahati | Exam pattern, rules, dates | FREE</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="res-category">
+                <div class="res-cat-header pyq-header">
+                    <i class="fas fa-history"></i>
+                    <h3>Previous Year Questions (PYQs) – FREE</h3>
+                </div>
+                <div class="res-list">
+                    <a href="https://gate2026.iitg.ac.in/download.html" target="_blank" class="res-card">
+                        <div class="rc-icon pyq-icon"><i class="fas fa-download"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">Official GATE PYQs – IIT Guwahati</div>
+                            <div class="rc-sub">2007–2025 | Bulk Download | 100% FREE & Official</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://practicepaper.in/gate-ee/topic-wise-practice-of-gate-ee-previous-year-papers" target="_blank" class="res-card">
+                        <div class="rc-icon pyq-icon"><i class="fas fa-list-ol"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">PracticePaper.in – Topic-wise PYQs</div>
+                            <div class="rc-sub">Subject-wise organized GATE EE PYQs | FREE Practice</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://questions.examside.com/past-years/gate/gate-ee" target="_blank" class="res-card">
+                        <div class="rc-icon pyq-icon"><i class="fas fa-question-circle"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">ExamSide – Chapter-wise GATE EE PYQs</div>
+                            <div class="rc-sub">With solutions | Chapter-wise filter | FREE</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://ee.gateoverflow.in/" target="_blank" class="res-card">
+                        <div class="rc-icon pyq-icon"><i class="fas fa-comments"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">GATE Overflow EE – Community Q&A</div>
+                            <div class="rc-sub">Discussions, Solutions, All EE PYQs | FREE Community</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://gate2024.iisc.ac.in/wp-content/uploads/2024/EE24S8.pdf" target="_blank" class="res-card">
+                        <div class="rc-icon pyq-icon"><i class="fas fa-file-pdf"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">GATE 2024 EE Official Question Paper</div>
+                            <div class="rc-sub">IISc Bengaluru Official | PDF | FREE</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://www.geeksforgeeks.org/gate/gate-previous-year-question-paper/" target="_blank" class="res-card">
+                        <div class="rc-icon pyq-icon"><i class="fas fa-code"></i></div>
+                        <div class="rc-info">
+                            <div class="rc-title">GeeksforGeeks GATE PYQ Papers</div>
+                            <div class="rc-sub">All EE previous year papers with solutions | FREE</div>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="res-category">
+                <div class="res-cat-header books-header">
+                    <h3>📖 Recommended Standard Books</h3>
+                </div>
+                <div class="books-table">
+                    <div class="book-row">
+                        <div class="book-subject">Electric Circuits</div>
+                        <div class="book-name">Circuit Theory – A. Chakrabarti</div>
+                        <div class="book-author">Free PYQ practice preferred</div>
+                    </div>
+                    <div class="book-row">
+                        <div class="book-subject">Signals & Systems</div>
+                        <div class="book-name">Signals & Systems – Alan V. Oppenheim (2nd Ed)</div>
+                        <div class="book-author">Standard reference</div>
+                    </div>
+                    <div class="book-row">
+                        <div class="book-subject">Control Systems</div>
+                        <div class="book-name">Control Systems Engg. – Norman S. Nise</div>
+                        <div class="book-author">Or: Nagrath & Gopal</div>
+                    </div>
+                    <div class="book-row">
+                        <div class="book-subject">Electrical Machines</div>
+                        <div class="book-name">Electrical Machinery – P.S. Bimbhra (7th Ed)</div>
+                        <div class="book-author">Most recommended for GATE</div>
+                    </div>
+                    <div class="book-row">
+                        <div class="book-subject">Power Systems</div>
+                        <div class="book-name">Power System Engineering – Nagrath & Kothari</div>
+                        <div class="book-author">Standard GATE textbook</div>
+                    </div>
+                    <div class="book-row">
+                        <div class="book-subject">Power Electronics</div>
+                        <div class="book-name">Power Electronics – P.S. Bimbhra</div>
+                        <div class="book-author">Or: Muhammad Rashid</div>
+                    </div>
+                    <div class="book-row">
+                        <div class="book-subject">Analog Electronics</div>
+                        <div class="book-name">Microelectronics – Sedra/Smith</div>
+                        <div class="book-author">Or: Boylestad & Nashelsky</div>
+                    </div>
+                    <div class="book-row">
+                        <div class="book-subject">Engineering Maths</div>
+                        <div class="book-name">Higher Engineering Mathematics – B.S. Grewal</div>
+                        <div class="book-author">Most used for GATE math</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ====================== MOCK TESTS PAGE ====================== -->
+    <section class="page" id="page-mock">
+        <div class="page-header">
+            <h1>📝 Mock Tests & Practice</h1>
+            <p class="subtitle">Official mock tests + Free online practice tests</p>
+        </div>
+
+        <div class="mock-alert">
+            <i class="fas fa-info-circle"></i>
+            <strong>Strategy:</strong> Start mock tests from December 2026. Take 2 per week in Dec, 3 per week in Jan 2027. Always analyze mistakes after each test!
+        </div>
+
+        <div class="mock-grid">
+
+            <div class="mock-category">
+                <div class="mock-cat-header official">
+                    <i class="fas fa-stamp"></i>
+                    <h3>Official GATE Mock Tests</h3>
+                    <span class="badge-free">FREE</span>
+                </div>
+                <div class="mock-list">
+                    <a href="https://cdn4.digialm.com//OnlineAssessment/index.html?585@@M472" target="_blank" class="mock-card">
+                        <div class="mc-left">
+                            <div class="mc-badge official-badge">OFFICIAL</div>
+                            <div class="mc-title">GATE 2026 Official EE Mock Test</div>
+                            <div class="mc-sub">IIT Guwahati | Same interface as real exam | FREE</div>
+                        </div>
+                        <div class="mc-meta">
+                            <div class="mc-duration"><i class="fas fa-clock"></i> 180 min</div>
+                            <div class="mc-marks"><i class="fas fa-star"></i> 100 marks</div>
+                        </div>
+                        <div class="mc-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </a>
+                    <a href="https://gate2026.iitg.ac.in/mock-test-links.html" target="_blank" class="mock-card">
+                        <div class="mc-left">
+                            <div class="mc-badge official-badge">OFFICIAL</div>
+                            <div class="mc-title">GATE 2026 All Papers Mock Tests</div>
+                            <div class="mc-sub">IIT Guwahati Official Page | All 30 papers</div>
+                        </div>
+                        <div class="mc-meta">
+                            <div class="mc-duration"><i class="fas fa-clock"></i> 3 hrs</div>
+                        </div>
+                        <div class="mc-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mock-category">
+                <div class="mock-cat-header free-mock">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>Free Online Mock Test Platforms</h3>
+                    <span class="badge-free">FREE</span>
+                </div>
+                <div class="mock-list">
+                    <a href="https://www.mockers.in/exam/gate-electrical-mock-test" target="_blank" class="mock-card">
+                        <div class="mc-left">
+                            <div class="mc-badge">Mockers.in</div>
+                            <div class="mc-title">GATE EE Mock Test – Mockers</div>
+                            <div class="mc-sub">Full 180-min test | MCQ+NAT | Free (Login needed)</div>
+                        </div>
+                        <div class="mc-meta">
+                            <div class="mc-duration"><i class="fas fa-clock"></i> 180 min</div>
+                            <div class="mc-marks"><i class="fas fa-star"></i> 100 marks</div>
+                        </div>
+                        <div class="mc-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </a>
+                    <a href="https://www.selfstudys.com/gate/electrical-engineering/online/exam" target="_blank" class="mock-card">
+                        <div class="mc-left">
+                            <div class="mc-badge">SelfStudys</div>
+                            <div class="mc-title">FREE Online GATE EE Test Series</div>
+                            <div class="mc-sub">No signup required | Multiple practice papers | FREE</div>
+                        </div>
+                        <div class="mc-meta">
+                            <div class="mc-duration"><i class="fas fa-clock"></i> Flexible</div>
+                        </div>
+                        <div class="mc-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </a>
+                    <a href="https://gatenotes.in/gate-electrical-mock-test.php" target="_blank" class="mock-card">
+                        <div class="mc-left">
+                            <div class="mc-badge">GateNotes</div>
+                            <div class="mc-title">GATE EE Mock Test – GateNotes</div>
+                            <div class="mc-sub">Practice tests with solutions | FREE</div>
+                        </div>
+                        <div class="mc-meta">
+                            <div class="mc-duration"><i class="fas fa-clock"></i> 180 min</div>
+                        </div>
+                        <div class="mc-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </a>
+                    <a href="https://www.adda247.com/gate-electrical-engineering/mock-test" target="_blank" class="mock-card">
+                        <div class="mc-left">
+                            <div class="mc-badge">Adda247</div>
+                            <div class="mc-title">GATE EE Mock Test – Adda247</div>
+                            <div class="mc-sub">Free tests available | Topic-wise quizzes | Free tier</div>
+                        </div>
+                        <div class="mc-meta">
+                            <div class="mc-duration"><i class="fas fa-clock"></i> 3 hrs</div>
+                        </div>
+                        <div class="mc-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </a>
+                    <a href="https://testbook.com/gate-previous-year-questions" target="_blank" class="mock-card">
+                        <div class="mc-left">
+                            <div class="mc-badge">TestBook</div>
+                            <div class="mc-title">GATE Chapter-wise PYQ Practice</div>
+                            <div class="mc-sub">Free chapter-wise practice tests | With analysis</div>
+                        </div>
+                        <div class="mc-meta">
+                            <div class="mc-duration"><i class="fas fa-clock"></i> Flexible</div>
+                        </div>
+                        <div class="mc-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </a>
+                    <a href="https://www.vidyalankar.org/infinite/gate/free-mock-test" target="_blank" class="mock-card">
+                        <div class="mc-left">
+                            <div class="mc-badge">Vidyalankar</div>
+                            <div class="mc-title">Vidyalankar Free GATE Mock Tests</div>
+                            <div class="mc-sub">5 FREE full-length tests for EE | Online</div>
+                        </div>
+                        <div class="mc-meta">
+                            <div class="mc-duration"><i class="fas fa-clock"></i> 3 hrs</div>
+                        </div>
+                        <div class="mc-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </a>
+                    <a href="https://edurev.in/courses/91796_Topic-wise-GATE-Past-Year-Papers-for-Electrical-Engineering" target="_blank" class="mock-card">
+                        <div class="mc-left">
+                            <div class="mc-badge">EduRev</div>
+                            <div class="mc-title">EduRev – Topic-wise GATE EE PYQs</div>
+                            <div class="mc-sub">13,000+ students | Free tier available | Topic practice</div>
+                        </div>
+                        <div class="mc-meta">
+                            <div class="mc-duration"><i class="fas fa-clock"></i> Topic-wise</div>
+                        </div>
+                        <div class="mc-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mock Test Schedule -->
+            <div class="mock-category">
+                <div class="mock-cat-header schedule-header">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Recommended Mock Test Schedule</h3>
+                </div>
+                <div class="mock-schedule-table">
+                    <div class="ms-row header">
+                        <div>Period</div>
+                        <div>Test Type</div>
+                        <div>Frequency</div>
+                        <div>Focus</div>
+                    </div>
+                    <div class="ms-row">
+                        <div>Apr–Nov 2026</div>
+                        <div>Topic-wise mini tests</div>
+                        <div>After each topic</div>
+                        <div>Concept verification</div>
+                    </div>
+                    <div class="ms-row">
+                        <div>December 2026</div>
+                        <div>Full mock tests</div>
+                        <div>2 per week</div>
+                        <div>Speed + accuracy building</div>
+                    </div>
+                    <div class="ms-row">
+                        <div>January 2027</div>
+                        <div>Full mock tests</div>
+                        <div>3 per week</div>
+                        <div>Score 65+ target</div>
+                    </div>
+                    <div class="ms-row highlight">
+                        <div>Feb Week 1</div>
+                        <div>Light revision only</div>
+                        <div>No new mocks</div>
+                        <div>Mental freshness</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ====================== TRICKS PAGE ====================== -->
+    <section class="page" id="page-tricks">
+        <div class="page-header">
+            <h1>⚡ Shortcuts, Tricks & Formulas</h1>
+            <p class="subtitle">Quick reference – memory tricks, shortcuts, must-know formulas</p>
+        </div>
+        <div id="tricksContent"></div>
+    </section>
+
+    <!-- ====================== TRACKER PAGE ====================== -->
+    <section class="page" id="page-tracker">
+        <div class="page-header">
+            <h1>📊 Progress Tracker</h1>
+            <p class="subtitle">Mark topics as completed | Track your overall progress</p>
+        </div>
+        <div id="trackerContent"></div>
+    </section>
+
+</main>
+
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+<script src="js/main.js"></script>
+</body>
+</html>
